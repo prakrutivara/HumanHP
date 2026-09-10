@@ -1,205 +1,79 @@
-# HumanHP
+# HUMANHP
 
 <p align="center">
-  <strong>Your Human State, in one place.</strong><br>
-  A personal health, wellness, fitness, nutrition, and goals platform with AI-assisted interpretation.
+  <strong>A personal Human State platform.</strong><br>
+  Health, wellness, fitness, nutrition, and goals — brought together in one place.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js">
-  <img src="https://img.shields.io/badge/TypeScript-5-blue?logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Supabase-Auth%20%2B%20Database-3ECF8E?logo=supabase\&logoColor=white" alt="Supabase">
-  <img src="https://img.shields.io/badge/AI-FreeLLMAPI-purple" alt="AI">
+  <img src="https://img.shields.io/badge/Next.js-black?logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/TypeScript-blue?logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/AI-OpenAI--compatible-purple" alt="AI">
 </p>
 
-\---
+---
 
 ## Overview
 
-**HumanHP** is a web-first personal **Human State** system.
+**HUMANHP** is a web-first personal Human State system built around a simple idea:
 
-Most personal health and wellness tools treat sleep, exercise, food, symptoms, and goals as separate trackers. HumanHP is designed around a different idea:
+> Personal health and wellbeing make more sense when their different signals are viewed together.
 
-> \*\*Capture the different parts of a person's life, then bring them together into one structured view of their current state.\*\*
+Instead of building separate trackers with no connection between them, HUMANHP lets a user record five areas of their life:
 
-Users can record information across five connected domains:
+| Domain | What is tracked |
+| --- | --- |
+| **Health** | Symptoms, health events, severity, duration |
+| **Wellness** | Sleep, water, energy, mood |
+| **Fitness** | Activities, duration, distance, intensity |
+| **Nutrition** | Meals, calories, protein, supplements |
+| **Goals** | Personal goals and measurable progress |
 
-* **Health** — symptoms and health events
-* **Wellness** — sleep, water, energy, and mood
-* **Fitness** — workouts and physical activity
-* **Nutrition** — meals, calories, protein, and supplement routines
-* **Goals** — personal goals and measurable progress
+These records form the foundation of a structured **Human State** that can be analyzed for meaningful, evidence-supported observations.
 
-The application aggregates these records into a **Human State**, where deterministic analytics identify supported observations and cross-domain patterns.
+---
 
-\---
+## Product
 
-## Why HumanHP?
+The interface is intentionally focused: users can move directly into the part of their Human State they want to work with, or view the combined state.
 
-The interesting part of HumanHP is not simply storing health data.
+### Dashboard
 
-It is the separation between **what the application can calculate reliably** and **what AI is useful for**.
+![HUMANHP Dashboard](screenshots/Dashboard.png)
 
-```text
-Health ──────┐
-Wellness ────┤
-Fitness ─────┤
-Nutrition ───┼──> Human State ──> Analytics ──> AI Context ──> Interpretation
-Goals ───────┘
-```
+### Human State
 
-**Application code performs calculations. AI handles language and interpretation.**
+![HUMANHP Human State](screenshots/State.png)
 
-For example, pace is calculated deterministically from distance and duration rather than asking a language model to perform arithmetic.
+HUMANHP also supports conversational, AI-assisted Health Assessment.
 
-\---
+A user can describe symptoms naturally. When more information is needed, the assistant asks focused follow-up questions. Once enough information is available, it can organize the information into:
 
-# Features
+- Symptoms and severity
+- Duration
+- Possible explanations
+- Warning signs
+- Recommended next steps
+- Doctor-urgency guidance
 
-## Health
+**This is not a diagnostic system.** Possible explanations are informational, not definitive medical conclusions. Users should seek appropriate professional medical care when symptoms are severe, worsening, or accompanied by warning signs.
 
-### Health Event Logging
+---
 
-Record health-related observations with:
+## The Engineering Idea
 
-* Event type
-* Severity (1–5)
-* Duration
-* Notes
-* Date
-
-### AI-Assisted Health Assessment
-
-Describe symptoms naturally and HumanHP can conduct a conversational assessment.
-
-The assessment can provide:
-
-* Structured symptom information
-* Severity and duration
-* Possible explanations
-* Warning signs to watch for
-* Recommended next steps
-* Doctor-urgency guidance
-
-The assistant can ask focused follow-up questions when additional information is needed instead of immediately producing an assessment.
-
-> \*\*Safety:\*\* HumanHP's Health Assessment is informational and AI-assisted. It is \*\*not a medical diagnosis\*\*, and possible explanations are not definitive.
-
-\---
-
-## Wellness
-
-Track the everyday signals that contribute to how you feel:
-
-* Sleep duration
-* Water intake
-* Energy (1–5)
-* Mood (1–5)
-
-\---
-
-## Fitness
-
-Log physical activity such as:
-
-* Running
-* Walking
-* Gym
-* Cycling
-* Yoga
-* Other activities
-
-Track:
-
-* Duration
-* Distance
-* Intensity
-* Notes
-
-For activities where distance and duration are available, HumanHP calculates pace deterministically in application code.
-
-\---
-
-## Nutrition
-
-Keep nutrition logging simple and useful rather than trying to become a massive food database.
-
-Record:
-
-* Meals / food descriptions
-* Calories
-* Protein
-* Additional nutrition information
-* Notes
-
-HumanHP also supports supplement routines and nutrient/RDA information.
-
-\---
-
-## Goals
-
-Create personal goals and track measurable progress alongside the rest of your Human State.
-
-The goal system is designed to avoid inventing progress when the available data is insufficient.
-
-\---
-
-## Human State
-
-The Human State is the core concept behind HumanHP.
-
-It brings together:
-
-|Domain|Example information|
-|-|-|
-|**Wellness**|Sleep, water, energy, mood|
-|**Health**|Recent events, severity, frequency|
-|**Fitness**|Activity, duration, distance|
-|**Nutrition**|Calories, protein, available nutrition data|
-|**Goals**|Active goals and measurable progress|
-|**Signals**|Supported observations across domains|
-
-### Cross-domain observations
-
-When the data supports it, HumanHP can identify patterns such as:
-
-* Fatigue occurring alongside below-average sleep
-* Changes in activity volume
-* Sleep differences on higher-activity days
-* Protein intake compared with workout days
-* Mood or energy changes alongside changes in sleep
-
-These are expressed as **observations**, not unsupported causal claims.
-
-For example:
-
-> Lower sleep was observed on days with higher activity.
-
-rather than:
-
-> Your workout caused your poor sleep.
-
-\---
-
-# AI Architecture
-
-HumanHP keeps the AI layer separate from the underlying Human State engine.
+The central design decision in HUMANHP is to separate **deterministic computation** from **AI interpretation**.
 
 ```text
 User Data
     │
     ▼
-Data Access
+Human State
     │
-    ▼
-Human State Builder
-    │
-    ▼
-Deterministic Analytics
-    │
-    ├── Metrics
+    ├── Deterministic metrics
     ├── Aggregations
-    └── Supported observations
+    └── Evidence-supported observations
     │
     ▼
 AI Context
@@ -211,253 +85,281 @@ AI Provider
 Natural-language interpretation
 ```
 
-This separation makes the system easier to reason about and allows the AI provider to change without redesigning the Human State model.
+If the application can calculate something reliably, it does so in application code.
 
-### Current AI setup
+For example, when distance and duration are available, running/walking pace is calculated deterministically rather than delegated to a language model.
 
-The current development version uses **FreeLLMAPI** as a local OpenAI-compatible AI gateway.
+AI is reserved for tasks where language understanding adds value — such as conversational health assessment and contextual interpretation.
 
-That means:
+This keeps important calculations reproducible and makes the AI layer easier to replace or extend.
 
-* Provider credentials remain outside the application source code
-* The application talks to an OpenAI-compatible endpoint
-* FreeLLMAPI handles the configured provider/model routing
-* The AI integration can remain provider-independent
+---
 
-\---
+## Human State
 
-# Architecture
+The **Human State** is the core of the product.
+
+It brings together recent information from the five domains and turns raw records into a structured view containing:
+
+- Wellness summaries
+- Recent health information
+- Fitness activity
+- Nutrition summaries
+- Goals and measurable progress
+- Cross-domain observations
+
+### Evidence over assumptions
+
+HUMANHP is designed to report what the available data supports rather than inventing a story around it.
+
+For example:
+
+> **Lower sleep was observed on days with higher activity.**
+
+rather than:
+
+> **Your workout caused your poor sleep.**
+
+The system favors language such as *observed alongside*, *coincided with*, and *may be worth watching* when describing patterns.
+
+---
+
+## Architecture
 
 ```text
-┌─────────────────────────────────────────────────────┐
-│                     Next.js App                     │
-│                                                     │
-│  Health │ Wellness │ Fitness │ Nutrition │ Goals   │
-│                         │                           │
-│                         ▼                           │
-│                  Human State Page                   │
-└─────────────────────────┬───────────────────────────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │     Supabase    │
-                 │ Auth + Database │
-                 └────────┬────────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │    Analytics    │
-                 │  Deterministic  │
-                 └────────┬────────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │    AI Context   │
-                 └────────┬────────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │   FreeLLMAPI    │
-                 │ Local AI Router │
-                 └─────────────────┘
+┌──────────────────────────────────────────────┐
+│                 Next.js App                  │
+│                                              │
+│ Health │ Wellness │ Fitness │ Nutrition │ Goals
+│                      │                       │
+│                      ▼                       │
+│               Human State View               │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │    Supabase     │
+              │ Auth + Database │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │    Analytics    │
+              │  Deterministic  │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │    AI Context   │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │   AI Gateway    │
+              │  OpenAI-style   │
+              │     API         │
+              └─────────────────┘
 ```
 
 ### Technology
 
-* **Next.js** — application framework
-* **React** — UI
-* **TypeScript** — application types and logic
-* **Tailwind CSS** — styling
-* **Supabase** — authentication and persistent user data
-* **FreeLLMAPI** — local OpenAI-compatible AI gateway
-* **OpenAI SDK** — compatible client interface
-* **Zod** — validation where applicable
+- **Next.js / React** — web application
+- **TypeScript** — application logic and types
+- **Tailwind CSS** — UI styling
+- **Supabase** — authentication and persistent data
+- **OpenAI SDK** — OpenAI-compatible client interface
+- **FreeLLMAPI** — current local AI gateway for development
+- **Zod** — validation where applicable
 
-\---
+---
 
-# Data \& Privacy
+## AI Provider Strategy
 
-HumanHP is designed around authenticated, user-owned records.
+The application is **provider-independent by design**.
 
-Supabase is used for authentication and persistence, with records associated with authenticated user IDs and protected using Row Level Security where configured.
+The current development setup uses FreeLLMAPI because it provides a local OpenAI-compatible endpoint and allows the project to work without directly embedding a paid model-provider dependency into the application.
 
-Sensitive environment files are intentionally excluded from Git:
+FreeLLMAPI is therefore a **development/runtime gateway, not the Human State architecture itself**.
+
+Conceptually:
 
 ```text
-.env
-.env.\*
-!.env.example
+                HumanHP
+                   │
+              AI Context
+                   │
+                   ▼
+            OpenAI-compatible
+               interface
+                   │
+          ┌────────┴────────┐
+          ▼                 ▼
+     FreeLLMAPI        Future provider
+      (current)          (replaceable)
 ```
 
-**Never commit `.env.local` or an API key to the repository.**
+The goal is to keep the Human State engine independent from whichever model or gateway is used underneath it.
 
-\---
+---
 
-# Getting Started
+## Data & Security
 
-## Prerequisites
+HUMANHP is built around authenticated, user-owned records.
 
-You will need:
+- Users authenticate through Supabase.
+- Records are associated with authenticated user IDs.
+- Database access is protected with Row Level Security where configured.
+- Server-side credentials are kept out of client code.
+- Environment files containing secrets are excluded from Git.
 
-* Node.js
-* npm
-* A Supabase project configured for the application
-* FreeLLMAPI running locally if you want to use the current AI Health Assessment
+The repository intentionally contains `.env.example`, but **never `.env.local`**.
 
-## 1\. Clone
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+- A configured Supabase project
+- FreeLLMAPI running locally for the current AI setup
+
+### 1. Clone
 
 ```bash
 git clone https://github.com/prakrutivara/HumanHP.git
 cd HumanHP
 ```
 
-## 2\. Install dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-## 3\. Configure environment variables
+### 3. Configure environment variables
 
-Create a local environment file:
+Create `.env.local` using `.env.example` as a template.
 
-```text
-.env.local
-```
-
-Use `.env.example` as the template and provide your own Supabase credentials.
-
-For the current FreeLLMAPI setup, the AI configuration is:
+The current AI configuration uses:
 
 ```env
-FREELLMAPI\_BASE\_URL=http://127.0.0.1:31415/v1
-FREELLMAPI\_API\_KEY=your\_freellmapi\_unified\_key
+FREELLMAPI_BASE_URL=http://127.0.0.1:31415/v1
+FREELLMAPI_API_KEY=your_local_unified_key
 ```
 
-The API key must remain local and must never be committed.
+Add your own Supabase project values as well.
 
-## 4\. Start FreeLLMAPI
+**Never commit `.env.local` or any API key.**
 
-Run FreeLLMAPI locally and configure at least one AI provider/model.
-
-The application uses the local OpenAI-compatible endpoint exposed by the FreeLLMAPI desktop application.
-
-## 5\. Start HumanHP
+### 4. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Open:
+Then open:
 
 ```text
 http://localhost:3000
 ```
 
-\---
+### About the current AI setup
 
-# Project Structure
+The current development version expects FreeLLMAPI to be running on the same machine. A cloned copy of the repository therefore does **not** automatically have access to the original developer's local AI gateway or credentials.
+
+---
+
+## Project Structure
 
 ```text
-HumanHP/
-│
-├── app/
-│   ├── api/
-│   │   ├── health-assistant/
-│   │   ├── insight/
-│   │   └── test/
-│   │
-│   ├── auth/
-│   ├── dashboard/
-│   │   ├── health/
-│   │   ├── wellness/
-│   │   ├── fitness/
-│   │   ├── nutrition/
-│   │   ├── goals/
-│   │   └── state/
-│   │
-│   └── ...
-│
-├── components/
-│   ├── auth/
-│   ├── brand/
-│   ├── layout/
-│   └── ui/
-│
-├── lib/
-│   ├── ai/
-│   ├── supabase/
-│   ├── analytics.ts
-│   ├── types.ts
-│   ├── seedData.ts
-│   └── ...
-│
-├── scripts/
-│
-├── .env.example
-├── .gitignore
-├── package.json
-└── tsconfig.json
+app/
+├── api/
+│   ├── health-assistant/
+│   ├── insight/
+│   └── test/
+├── auth/
+└── dashboard/
+    ├── health/
+    ├── wellness/
+    ├── fitness/
+    ├── nutrition/
+    ├── goals/
+    └── state/
+
+components/
+├── auth/
+├── brand/
+├── layout/
+└── ui/
+
+lib/
+├── ai/
+├── supabase/
+├── analytics.ts
+├── types.ts
+└── seedData.ts
+
+scripts/
 ```
 
-\---
+---
 
-# Design Principles
+## Design Principles
 
-### 1\. Data first
+### Data first
+Insights should be grounded in actual user records.
 
-Insights should come from actual logged information rather than invented data.
+### Deterministic where possible
+Metrics and arithmetic belong in application code when they can be calculated reliably.
 
-### 2\. Deterministic where possible
+### AI for language
+AI adds value through natural-language interaction and interpretation, not by replacing deterministic business logic.
 
-If the application can calculate something reliably, application code should calculate it.
+### Observation over causation
+Correlations and co-occurring patterns are described cautiously rather than presented as proven causes.
 
-### 3\. AI for interpretation
-
-AI is useful for natural-language interaction, contextual explanations, and conversational interpretation — not for basic arithmetic or authoritative medical decisions.
-
-### 4\. Observation over causation
-
-Patterns are described cautiously using the evidence available in the user's data.
-
-### 5\. User-owned data
-
+### User-owned data
 Authenticated users should only access their own records.
 
-### 6\. Provider independence
+### Provider independence
+The Human State engine should not depend on one particular model provider or gateway.
 
-The Human State engine should not depend on one particular AI provider.
+### Product simplicity
+The interface prioritizes clarity, compact information, responsive layouts, and consistent interactions over decorative complexity.
 
-### 7\. Simple product design
+---
 
-The interface intentionally favors minimalism, clear typography, responsive layouts, compact information, and consistent interaction patterns.
+## Roadmap
 
-\---
+The project is actively evolving. Near-term areas include:
 
-# Health Disclaimer
+- [ ] Expand cross-domain Human State insights
+- [ ] Improve AI context and conversational continuity
+- [ ] Strengthen automated testing and validation
+- [ ] Prepare a deployment architecture for a public demo
+- [ ] Add more polished product documentation and walkthroughs
 
-HumanHP's Health Assessment is an **AI-assisted informational feature, not a medical diagnosis**.
+---
 
-Possible explanations are not definitive. Users should seek appropriate professional medical care when needed, especially when symptoms are severe, worsening, or accompanied by warning signs.
-
-\---
-
-# Project Status
+## Project Status
 
 **Active development**
 
-HumanHP is being developed as a practical personal Human State platform, with the current focus on:
+HUMANHP is being developed as a practical exploration of how personal health and everyday wellbeing can be represented as one connected system — combining persistent user data, deterministic analytics, and carefully scoped AI interaction.
 
-* Reliable user data persistence
-* Cross-domain Human State analytics
-* AI-assisted interaction
-* Clear separation between deterministic application logic and AI interpretation
-* A simple, professional web experience
+---
 
-\---
+## Health Disclaimer
+
+HUMANHP's Health Assessment is an **AI-assisted informational feature and is not a medical diagnosis**.
+
+Possible explanations are not definitive. The application should not be used as a substitute for professional medical advice, diagnosis, or treatment.
+
+---
 
 <p align="center">
-  <strong>HumanHP</strong><br>
-  <sub>One place to understand the different parts of your human state.</sub>
+  <strong>HUMANHP</strong><br>
+  <sub>One place to understand the different parts of your Human State.</sub>
 </p>
-
